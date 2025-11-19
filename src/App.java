@@ -3,6 +3,8 @@ import javax.swing.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        RegisterDAO registerDAO = new RegisterDAO();
+
         JFrame mainFrame = new JFrame();
         mainFrame.setSize(new Dimension(400, 400));
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,6 +56,10 @@ public class App {
         registerBtn.setForeground(Color.WHITE);
         registerBtn.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         registerBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        registerBtn.addActionListener(e -> {
+            registerDAO.addUser(name.getText(), email.getText(), password.getPassword().toString());
+            JOptionPane.showMessageDialog(null, "User Registered Successfully!!");
+        });
 
         detailsPanel.add(nameLabel);
         detailsPanel.add(name);
