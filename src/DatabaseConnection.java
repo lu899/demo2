@@ -4,9 +4,9 @@ public class DatabaseConnection {
     private static Connection conn = null;
 
     public static Connection getConnection(){
-        String url = "jdbc:mysql://localhost:3306/exampledb";
+        String url = "jdbc:mysql://localhost:3306/your_database";
         String user = "root";
-        String password = "Password_22";
+        String password = "your_sql_password";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
