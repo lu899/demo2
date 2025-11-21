@@ -6,7 +6,7 @@ public class App {
         RegisterDAO registerDAO = new RegisterDAO();
 
         JFrame mainFrame = new JFrame();
-        mainFrame.setSize(new Dimension(400, 400));
+        mainFrame.setSize(new Dimension(400, 450));
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
@@ -17,8 +17,8 @@ public class App {
         mainLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JPanel detailsPanel = new JPanel();
-        detailsPanel.setMinimumSize(new Dimension(250, 200));
-        detailsPanel.setMaximumSize(new Dimension(250, 200));
+        detailsPanel.setMinimumSize(new Dimension(250, 270));
+        detailsPanel.setMaximumSize(new Dimension(250, 270));
         detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.Y_AXIS));
         detailsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -32,18 +32,27 @@ public class App {
         name.setMaximumSize(fixedSize);
         name.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JLabel emailLabel = new JLabel("Enter Your Email:");
-        emailLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
-        emailLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        JLabel telephoneLabel = new JLabel("Enter Your telephone Number:");
+        telephoneLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
+        telephoneLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JTextField email = new JTextField(20);
-        email.setMinimumSize(fixedSize);
-        email.setMaximumSize(fixedSize);
-        email.setAlignmentX(Component.LEFT_ALIGNMENT);
+        JTextField telephone = new JTextField(20);
+        telephone.setMinimumSize(fixedSize);
+        telephone.setMaximumSize(fixedSize);
+        telephone.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JLabel addressLabel = new JLabel("Enter Your address:");
+        addressLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
+        addressLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JTextField address = new JTextField(20);
+        address.setMinimumSize(fixedSize);
+        address.setMaximumSize(fixedSize);
+        address.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JLabel passwordLabel = new JLabel("Enter Your Password:");
         passwordLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
-        emailLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        passwordLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JPasswordField password = new JPasswordField(20);
         password.setMinimumSize(fixedSize);
@@ -57,19 +66,26 @@ public class App {
         registerBtn.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         registerBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         registerBtn.addActionListener(e -> {
-            registerDAO.addUser(name.getText(), email.getText(), password.getPassword().toString());
-            JOptionPane.showMessageDialog(null, "User Registered Successfully!!");
+            registerDAO.addUser(name.getText(), telephone.getText(), address.getText(), password.getPassword().toString());
+            name.setText(null);
+            telephone.setText(null);
+            address.setText(null);
+            password.setText(null);
         });
 
         detailsPanel.add(nameLabel);
         detailsPanel.add(name);
         detailsPanel.add(Box.createVerticalStrut(15));
-        detailsPanel.add(emailLabel);
-        detailsPanel.add(email);
+        detailsPanel.add(telephoneLabel);
+        detailsPanel.add(telephone);
+        detailsPanel.add(Box.createVerticalStrut(15));
+        detailsPanel.add(addressLabel);
+        detailsPanel.add(address);
         detailsPanel.add(Box.createVerticalStrut(15));
         detailsPanel.add(passwordLabel);
         detailsPanel.add(password);
 
+        mainPanel.add(Box.createVerticalStrut(25));
         mainPanel.add(mainLabel);
         mainPanel.add(Box.createVerticalStrut(25));
         mainPanel.add(detailsPanel);

@@ -10,7 +10,7 @@ public class DatabaseConnection {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("Couldn't find class!!");
             e.printStackTrace();
         }
